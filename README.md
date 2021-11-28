@@ -1,24 +1,32 @@
-# hello-world
 
-## Project setup
-```
-yarn install
-```
+> A Vue.js 2.0 UI Toolkit for Web.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+vox will stay with Vue 2.x 
 
-### Compiles and minifies for production
-```
-yarn build
+<!-- For Vue 3.0, we recommend using [vox Plus](https://github.com/vox-plus/vox-plus) from the same team -->
+
+## Install
+```shell
+npm install vox-design -S
 ```
 
-### Lints and fixes files
-```
-yarn lint
+## Quick Start
+``` javascript
+import Vue from 'vue'
+import Vox from 'vox'
+
+Vue.use(Vox)
+
+// or
+import {
+  Select,
+  Button
+  // ...
+} from 'vox'
+
+Vue.component(Select.name, Select)
+Vue.component(Button.name, Button)
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## LICENSE
+[MIT](LICENSE)

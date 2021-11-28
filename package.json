@@ -1,45 +1,76 @@
 {
-  "name": "hello-world",
-  "version": "0.1.0",
-  "private": true,
+  "name": "deep-ui",
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "yarn lib",
     "lint": "vue-cli-service lint",
+    "clean": "rimraf lib && rimraf src/*/lib",
+    "build:theme": "node build/bin/gen-cssfile && gulp build --gulpfile src/theme-chalk/gulpfile.js && cp-cli src/theme-chalk/lib lib/theme-chalk",
+    "build:lib": "vue-cli-service build --target lib --name deep-ui --dest lib src/index.js",
+    "pub": "yarn build:lib && yarn build:theme",
+    "docs:build": "vuepress build docs",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:deploy": "bash build/docs-deploy.sh",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
+    "new": "plop"
+  },
+  "description": "A Component Library for Vue.js.",
+  "author": "cjfff <cjfff1996@gmail.com>",
+  "contributors": [
+    "https://github.com/cjfff"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjfff/deep-ui.git"
+  },
+  "homepage": "https://github.com/deep-ui/README.md",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "keywords": [
+    "deep-ui",
+    "vue",
+    "components"
+  ],
+  "license": "MIT",
+  "main": "lib/deep-ui.umd.min.js",
+  "unpkg": "src/index.js",
+  "style": "lib/theme-chalk/index.css",
+  "devDependencies": {
+    "@femessage/el-form-renderer": "^1.14.6",
+    "@femessage/element-ui": "^2.16.0",
+    "@vue/babel-preset-app": "^4.1.0",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-router": "~4.2.0",
+    "@vue/cli-service": "^4.2.3",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "all-contributors-cli": "^6.14.0",
+    "babel-eslint": "^10.0.3",
+    "cp-cli": "^2.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "glob": "^7.1.6",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-less": "^4.0.1",
+    "json-templater": "^1.2.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "markdown-it-vuese": "^0.4.0",
+    "plop": "^2.6.0",
+    "prettier": "^1.19.1",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
+    "vuepress-plugin-live": "^1.5.1"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11",
-    "vuepress": "^1.8.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "core-js": "3.x"
+  }
 }

@@ -7,7 +7,7 @@ vox will stay with Vue 2.x
 
 ## Install
 ```shell
-npm install vox-design -S
+npm install @ox/vox -S
 ```
 
 ## Quick Start
